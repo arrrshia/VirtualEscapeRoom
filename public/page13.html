@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Escape Room Challenge</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Welcome to the Computer Science Escape Room!</h1>
+    <p>Challenge 13: In the context of web development, what does 'HTML' stand for? (Answer with four words, each word capitalized)</p>
+    <input type="text" id="answer" placeholder="Enter your answer here">
+    <button onclick="submitAnswer()">Submit</button>
+    <p id="feedback"></p>
+    <img src="_).png" alt="Challenge Image" id="challenge-img">
+  </div>
+
+  <script>
+      function submitAnswer() {
+          const answer = document.getElementById('answer').value;
+          const teamId = localStorage.getItem('teamId');
+          const page = 13; // Make sure this is the correct page number
+
+          const dataToSend = { teamId, answer, page };
+          console.log('Sending data:', dataToSend); // Log data being sent
+
+          fetch('/submit-answer', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(dataToSend)
+          })
+          .then(response => response.json())
+          .then(data => {
+              if (data.success) {
+                  // If answer is correct, redirect to the next page
+                  window.location.href = 'page14.html'; // Adjust this URL to the correct next page
+              } else {
+                  // If answer is incorrect, display an error message (adjust this as needed)
+                  alert('Incorrect answer. Try again.');
+              }
+          })
+          .catch(error => {
+              console.error('Error submitting answer:', error);
+          });
+      }
+  </script>
+</body>
+
+</html>

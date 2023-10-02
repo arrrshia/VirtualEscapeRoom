@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leaderboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: black;
+      color: white;
+      text-align: center;
+    }
+
+    .leaderboard {
+      margin: 20px;
+      padding: 20px;
+      border: 2px solid white;
+      border-radius: 10px;
+    }
+
+    .team {
+      margin: 10px 0;
+      padding: 10px;
+      border-bottom: 1px solid white;
+    }
+
+    .team:last-child {
+      border-bottom: none;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Leaderboard</h1>
+  <div class="leaderboard" id="leaderboard"></div>
+
+  <script>
+    // Function to fetch and display leaderboard data
+    function fetchLeaderboard() {
+      fetch('http://localhost:3000/leaderboard')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok ' + response.statusText);
+          }
+          return response.json();
+        })
+        .then(data => {
+          const leaderboardDiv = document.getElementById('leaderboard');
+          // Ensure data.teams exists and is an array
+          if (data.teams && Array.isArray(data.teams)) {
+            data.teams.forEach(team => {
+              const teamDiv = document.createElement('div');
+              teamDiv.className = 'team';
+              // Use team.name and team.progress, adjust as needed based on actual response structure
+              teamDiv.textContent = `Team: ${team.name}, Progress: ${team.progress}`;
+              for (let i = 0; i < team.progress; i++) {
+                const progressDiv = document.createElement('div');
+                progressDiv.className = 'progress';
+                teamDiv.appendChild(progressDiv);
+              }
+              leaderboardDiv.appendChild(teamDiv);
+            });
+          } else {
+            console.error('Unexpected server response format:', data);
+          }
+        })
+        .catch(error => {
+          console.error('There has been a problem with your fetch operation:', error);
+        });
+    }
+
+    // Call function to fetch and display data when page loads
+    window.onload = fetchLeaderboard;
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Team Entry</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: black;
+      color: white;
+      text-align: center;
+    }
+
+    .entry-form {
+      margin-top: 20%;
+    }
+
+    input {
+      padding: 10px;
+      margin: 10px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: white;
+      color: black;
+      border: none;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      background-color: lightgray;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="entry-form">
+    <h1>Enter Your Team Name</h1>
+    <input type="text" id="teamName" placeholder="Team Name">
+    <button onclick="startChallenge()">Start Challenge</button>
+  </div>
+
+  <script>
+      function startGame() {
+
+          // Navigate to the first challenge page or perform other actions
+      }
+
+    function startChallenge() {
+      const teamName = document.getElementById('teamName').value;
+      if (!teamName) {
+        alert('Please enter a team name!');
+        return;
+      }
+
+      // Send the team name to the server
+      fetch('http://localhost:3000/start', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ teamName }),
+      })
+        .then(response => response.json())
+        .then(data => {
+          // Handle the response (e.g., store the team ID, navigate to the 
+          if (data.success) {
+            localStorage.setItem('teamId', data.teamId); // assuming the 
+            window.location.href = 'page0.html'; // Redirect to the first
+          } else {
+            alert('Error starting challenge. Please try again.');
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          alert('Error starting challenge. Please try again.');
+        });
+    }
+  </script>
+</body>
+
+</html>
+

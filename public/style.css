@@ -1,0 +1,80 @@
+body {
+  background-color: black;
+  color: white;
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+#challenge-img {
+  max-width: 25%;
+  /* Ensures the image isn't wider than its container */
+  height: auto;
+  /* Maintains the aspect ratio */
+  margin-top: 20px;
+  /* Adds some space between the answer box and the image */
+  border-radius: 8px;
+  /* Optional: for rounded corners */
+  display: block;
+  /* Makes the image a block element */
+  margin-left: auto;
+  /* Together with margin-right, centers the image horizontally */
+  margin-right: auto;
+}
+
+
+.container {
+  max-width: 600px;
+  text-align: center;
+  padding: 20px;
+  border: 2px solid white;
+  border-radius: 8px;
+  background-color: #333;
+}
+
+input {
+  padding: 10px;
+  margin: 10px 0;
+  color: #333;
+  background-color: white;
+  border: none;
+  border-radius: 4px;
+  width: 80%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+button {
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: #4CAF50;
+  /* Green background */
+  border: none;
+  /* Remove border */
+  color: white;
+  /* White text */
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  border-radius: 4px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+button:hover {
+  background-color: white;
+  color: black;
+}
+
+#feedback {
+  margin-top: 10px;
+  color: #EA0000;
+}

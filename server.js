@@ -1,7 +1,9 @@
 const express = require('express');
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const app = express();
-
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
+}
 const uri = "mongodb+srv://andrewalmasi:7HwxRgqTW1idetg3@cococluster.tu4pqtm.mongodb.net/?retryWrites=true&w=majority";
 dbname = "escapeRoom";
 let db;

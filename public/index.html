@@ -48,10 +48,6 @@
   </div>
 
   <script>
-      function startGame() {
-
-          // Navigate to the first challenge page or perform other actions
-      }
 
     function startChallenge() {
       const teamName = document.getElementById('teamName').value;
@@ -61,7 +57,7 @@
       }
 
       // Send the team name to the server
-      fetch('http://localhost:3000/start', {
+      fetch('/start', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

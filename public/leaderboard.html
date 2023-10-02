@@ -29,6 +29,15 @@
     .team:last-child {
       border-bottom: none;
     }
+
+    .progress {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-color: green;
+      margin: 2px;
+      border-radius: 4px;
+    }
   </style>
 </head>
 
@@ -37,9 +46,8 @@
   <div class="leaderboard" id="leaderboard"></div>
 
   <script>
-    // Function to fetch and display leaderboard data
     function fetchLeaderboard() {
-      fetch('http://localhost:3000/leaderboard')
+      fetch('/leaderboard')
         .then(response => {
           if (!response.ok) {
             throw new Error('Network response was not ok ' + response.statusText);
@@ -48,19 +56,24 @@
         })
         .then(data => {
           const leaderboardDiv = document.getElementById('leaderboard');
-          // Ensure data.teams exists and is an array
+          leaderboardDiv.innerHTML = '';
           if (data.teams && Array.isArray(data.teams)) {
             data.teams.forEach(team => {
               const teamDiv = document.createElement('div');
               teamDiv.className = 'team';
-              // Use team.name and team.progress, adjust as needed based on actual response structure
-              teamDiv.textContent = `Team: ${team.name}, Progress: ${team.progress}`;
+
+              const teamName = document.createElement('p'); // Create paragraph element for team name
+              teamName.textContent = `Team: ${team.name}`; // Set the text content
+              teamDiv.appendChild(teamName); // Append the paragraph to the team div
+
+              // Create and append green boxes for progress
               for (let i = 0; i < team.progress; i++) {
                 const progressDiv = document.createElement('div');
-                progressDiv.className = 'progress';
-                teamDiv.appendChild(progressDiv);
+                progressDiv.className = 'progress'; // Set class to 'progress'
+                teamDiv.appendChild(progressDiv); // Append each progress div to the team div
               }
-              leaderboardDiv.appendChild(teamDiv);
+
+              leaderboardDiv.appendChild(teamDiv); // Append team div to leaderboard
             });
           } else {
             console.error('Unexpected server response format:', data);
@@ -73,6 +86,10 @@
 
     // Call function to fetch and display data when page loads
     window.onload = fetchLeaderboard;
+
+    // Set an interval to fetch data every 5 seconds (5000 milliseconds)
+    setInterval(fetchLeaderboard, 5000);
+
   </script>
 </body>
 

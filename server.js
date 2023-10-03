@@ -1,34 +1,10 @@
 const express = require('express');
-const { MongoClient, ServerApiVersion } = require('mongodb');
 const app = express();
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
-const uri = process.env.MONGODB_URI;
-dbname = "escapeRoom";
-let db;
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
-const client = new MongoClient(uri, {
-  serverApi: {
-    version: ServerApiVersion.v1,
-    strict: true,
-    deprecationErrors: true,
-  }
-});
-async function run() {
-  try {
-    // Connect the client to the server    (optional starting in v4.7)
-    await client.connect();
-    // Send a ping to confirm a successful connection
-    await client.db(dbname).command({ ping: 1 });
-    console.log("Pinged your deployment. You successfully connected to MongoDB!");
-    db = client.db(dbname)
-    startServer();
-  } catch (error) {
-      console.dir(error);
-  }
-}
-run();
+
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
@@ -135,23 +111,23 @@ function startServer(){
         if (pageIndex == 0)
             return answer == '1111';
         if (pageIndex == 1)
-            return answer == 'O(logn)';
+            return answer == 'compiler' || answer == 'Compiler';
         if (pageIndex == 2)
             return answer == '26';
         if (pageIndex == 3)
             return answer == 'Queue';
         if (pageIndex == 4)
-            return answer == 'Merge Sort' || answer == 'Heap Sort';
+            return answer == '72';
         if (pageIndex == 5)
-            return answer == 'Structured Query Language';
+            return answer == '[2, 3, 7, 11, 12], [5, 6, 8, 9], [1, 4, 10, 13]' || answer == '[2, 3, 11, 12], [5, 6, 7, 8, 9], [1, 4, 10, 13]';
         if (pageIndex == 6)
-            return answer == '2^h - 1' || answer == '2^h-1';
+            return answer == '0';
         if (pageIndex == 7)
-            return answer == 'Internet Protocol';
+            return answer == '22';
         if (pageIndex == 8)
-            return answer == 'object oriented';
+            return answer == 'Yes' || answer == 'yes;
         if (pageIndex == 9)
-            return answer == 'CSS';
+            return answer == 'pseudocode' || answer == 'Pseudocode';
         if (pageIndex == 10)
             return answer == 'Bubble Sort';
         if (pageIndex == 11)
@@ -159,7 +135,7 @@ function startServer(){
         if (pageIndex == 12)
             return answer == 'Graphics Processing Unit';
         if (pageIndex == 13)
-            return answer == 'HyperText Markup Language';
+            return answer == 'No';
         if (pageIndex == 14)
             return answer == 'Stack';
         if (pageIndex == 15)

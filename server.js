@@ -148,7 +148,7 @@ function startServer(){
         if (pageIndex == 7)
             return answer == '22';
         if (pageIndex == 8)
-            return answer == 'Yes' || answer == 'yes;
+            return answer == 'Yes' || answer == 'yes';
         if (pageIndex == 9)
             return answer == 'pseudocode' || answer == 'Pseudocode';
         if (pageIndex == 10)

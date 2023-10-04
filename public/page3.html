@@ -2,53 +2,48 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Escape Room Challenge</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escape Room Challenge</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .challenge-text {
+            font-weight: bold;
+            margin: 15px 0;
+            padding: 10px;
+            border: 2px dashed #444;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+    </style>
 </head>
 
 <body>
-  <div class="container">
-    <h1>Welcome to the Computer Science Escape Room!</h1>
-    <p>Challenge 3: What data structure is FIFO? (Answer with a single word)</p>
-    <input type="text" id="answer" placeholder="Enter your answer here">
-    <button onclick="submitAnswer()">Submit</button>
-    <p id="feedback"></p>
-    <img src="_).png" alt="Challenge Image" id="challenge-img">
-  </div>
-
-  <script>
-      function submitAnswer() {
-          const answer = document.getElementById('answer').value;
-          const teamId = localStorage.getItem('teamId');
-          const page = 3; // Make sure this is the correct page number
-
-          const dataToSend = { teamId, answer, page };
-          console.log('Sending data:', dataToSend); // Log data being sent
-
-          fetch('/submit-answer', {
-              method: 'POST',
-              headers: {
-                  'Content-Type': 'application/json'
-              },
-              body: JSON.stringify(dataToSend)
-          })
-          .then(response => response.json())
-          .then(data => {
-              if (data.success) {
-                  // If answer is correct, redirect to the next page
-                  window.location.href = 'page4.html'; // Adjust this URL to the correct next page
-              } else {
-                  // If answer is incorrect, display an error message (adjust this as needed)
-                  alert('Incorrect answer. Try again.');
-              }
-          })
-          .catch(error => {
-              console.error('Error submitting answer:', error);
-          });
-      }
-  </script>
+    <div class="container">
+        <h1>Welcome to the Computer Science Escape Room!</h1>
+        <p class="challenge-text">
+            <strong>Coco's Enigmatic Algorithm</strong><br>
+            Coco the Computer Scientist has discovered a fascinating, yet perplexing algorithm on an ancient scroll. The algorithm is powerful but incomplete, and Coco needs your assistance to decipher its functionality.<br>
+            <br>
+            <strong>The Algorithm's Steps:</strong><br>
+            1. Begin with an integer n (where ( 1 &le; n &le; 100 ).<br>
+            2. If n is odd, multiply it by a mysterious number x.<br>
+            3. If n is even, divide it by 2.<br>
+            4. Repeat steps 2-3 until n becomes 1.<br>
+            <br>
+            Here’s where the enigma deepens: The scroll indicates that regardless of the initial value of n, it will always reduce to 1 after a finite number of steps. Fascinatingly, each different n results in a unique sequence of numbers before reaching 1.<br>
+            <br>
+            <strong>Coco's Challenge:</strong><br>
+            - Find the mystical number x that makes the algorithm work for all integers n within the specified range.<br>
+            <br>
+            <em>Hint for the Challenge:</em><br>
+            Observe the behavior of the sequence with different n values. Are there any mathematical patterns or famous conjectures that resemble Coco's Enigmatic Algorithm?
+        </p>
+        <input type="text" id="answer" placeholder="Enter your answer here">
+        <button onclick="submitAnswer()">Submit</button>
+        <p id="feedback"></p>
+        <img src="_).png" alt="Challenge Image" id="challenge-img">
+    </div>
 </body>
 
 </html>

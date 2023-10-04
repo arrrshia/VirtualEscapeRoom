@@ -140,7 +140,7 @@ function startServer(){
         if (pageIndex == 2)
             return answer == '26';
         if (pageIndex == 3)
-            return answer == 'Queue';
+            return answer == '3';
         if (pageIndex == 4)
             return answer == '72';
         if (pageIndex == 5)

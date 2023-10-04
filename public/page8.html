@@ -1,26 +1,33 @@
 <!DOCTYPE html>
+
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Escape Room Challenge</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Escape Room Challenge</title>
+<link href="style.css" rel="stylesheet"/>
+<style>
+.challenge-text {
+    font-weight: bold;
+    margin: 15px 0;
+    padding: 10px;
+    border: 2px dashed #444;
+    background-color: #f9f9f9;
+    color: #333;
+}
+</style></head>
 <body>
-  <div class="container">
-    <h1>Welcome to the Computer Science Escape Room!</h1>
-    <p>Challenge 8: You are blindfolded and 10 coins are placed in front of you on the table. You are allowed to touch the coins but can’t tell which way up they are by feel. You are told that there are 5 coins head up, and 5 coins tails up but not which ones are which.
+<div class="container">
+<h1>Welcome to the Computer Science Escape Room!</h1>
+<p class="challenge-text">Challenge 8: You are blindfolded and 10 coins are placed in front of you on the table. You are allowed to touch the coins but can’t tell which way up they are by feel. You are told that there are 5 coins head up, and 5 coins tails up but not which ones are which.
     
     Can you make two piles of coins each with the same number of heads up? You can flip the coins any number of times. </p>
-    <input type="text" id="answer" placeholder="Enter your answer here">
-    <button onclick="submitAnswer()">Submit</button>
-    <p id="feedback"></p>
-    <img src="_).png" alt="Challenge Image" id="challenge-img">
-  </div>
-
-  <script>
+<input id="answer" placeholder="Enter your answer here" type="text"/>
+<button onclick="submitAnswer()">Submit</button>
+<p id="feedback"></p>
+<img alt="Challenge Image" id="challenge-img" src="_).png"/>
+</div>
+<script>
       function submitAnswer() {
           const answer = document.getElementById('answer').value;
           const teamId = localStorage.getItem('teamId');
@@ -52,5 +59,4 @@
       }
   </script>
 </body>
-
 </html>

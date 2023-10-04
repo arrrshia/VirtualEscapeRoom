@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Congratulations!</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: black;
+      color: white;
+      text-align: center;
+    }
+
+    .container {
+      margin-top: 20%;
+    }
+
+    #passphrase {
+      font-weight: bold;
+      color: lime;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+      <img src="_).png" alt="Challenge Image" id="challenge-img">
+    <h1>Congratulations!</h1>
+    <p>You've successfully completed the Computer Science Escape Room!</p>
+    <p>Your passphrase is:</p>
+    <p id="passphrase"></p>
+  </div>
+
+  <script>
+    // Function to generate a random passphrase
+    function generatePassphrase() {
+      return 'apple-fig-grape';
+    }
+
+    // Display the generated passphrase
+    document.getElementById('passphrase').textContent = generatePassphrase();
+  </script>
+</body>
+
+</html>
+

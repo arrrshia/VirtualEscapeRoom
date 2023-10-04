@@ -1,24 +1,31 @@
 <!DOCTYPE html>
+
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Escape Room Challenge</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Escape Room Challenge</title>
+<link href="style.css" rel="stylesheet"/>
+<style>
+.challenge-text {
+    font-weight: bold;
+    margin: 15px 0;
+    padding: 10px;
+    border: 2px dashed #444;
+    background-color: #f9f9f9;
+    color: #333;
+}
+</style></head>
 <body>
-  <div class="container">
-    <h1>Welcome to the Computer Science Escape Room!</h1>
-    <p>Challenge 1: As a developer, you usually get mad at me because I complain a lot, although I’m usually right. What am I?</p>
-    <input type="text" id="answer" placeholder="Enter your answer here">
-    <button onclick="submitAnswer()">Submit</button>
-    <p id="feedback"></p>
-    <img src="_).png" alt="Challenge Image" id="challenge-img">
-  </div>
-
-  <script>
+<div class="container">
+<h1>Welcome to the Computer Science Escape Room!</h1>
+<p class="challenge-text">Challenge 1: As a developer, you usually get mad at me because I complain a lot, although I’m usually right. What am I?</p>
+<input id="answer" placeholder="Enter your answer here" type="text"/>
+<button onclick="submitAnswer()">Submit</button>
+<p id="feedback"></p>
+<img alt="Challenge Image" id="challenge-img" src="_).png"/>
+</div>
+<script>
       function submitAnswer() {
           const answer = document.getElementById('answer').value;
           const teamId = localStorage.getItem('teamId');
@@ -50,5 +57,4 @@
       }
   </script>
 </body>
-
 </html>

@@ -132,7 +132,6 @@ function startServer(){
             return false;
         }
 
-        // Example: answers for each page (replace with actual answers)
         if (pageIndex == 0)
             return answer == '1111';
         if (pageIndex == 1)
